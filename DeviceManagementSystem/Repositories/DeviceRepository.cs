@@ -14,6 +14,7 @@ namespace DeviceManagementSystem.Repositories
             {
                 using (DeviceContext db = new DeviceContext())
                 {
+                    db.Database.EnsureCreated();
                     return db.Devices.ToList();
                 }
             }
@@ -28,6 +29,7 @@ namespace DeviceManagementSystem.Repositories
             {
                 using (DeviceContext db = new DeviceContext())
                 {
+                    db.Database.EnsureCreated();
                     return db.Devices.FirstOrDefault(d => d.Model == deviceModel);
                 }
             }
@@ -42,12 +44,13 @@ namespace DeviceManagementSystem.Repositories
             {
                 using (DeviceContext db = new DeviceContext())
                 {
+                    db.Database.EnsureCreated();
                     var newDevice = new Device
                     {
                         DeviceId = deviceId,
                         Model = model,
                         Manufacturer = manufacturer,
-                        ManufacturDate = manufacturerDate,
+                        ManufactureDate = manufacturerDate,
                         Date = DateTime.Now
                     };
                     db.Devices.Add(newDevice);
@@ -65,6 +68,7 @@ namespace DeviceManagementSystem.Repositories
             {
                 using (DeviceContext db = new DeviceContext())
                 {
+                    db.Database.EnsureCreated();
                     var deviceToDelete = db.Devices.FirstOrDefault(d => d.DeviceId == deviceId);
                     if (deviceToDelete != null)
                     {

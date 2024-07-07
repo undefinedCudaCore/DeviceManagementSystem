@@ -36,7 +36,7 @@ namespace DeviceManagementSystem.Database
                 entity.Property(d => d.Manufacturer)
                     .HasMaxLength(150)
                     .HasColumnOrder(3);
-                entity.Property(s => s.ManufacturDate)
+                entity.Property(s => s.ManufactureDate)
                     .IsRequired()
                     .HasColumnOrder(4)
                     .HasColumnType("datetime");
