@@ -15,7 +15,7 @@
         {
         }
 
-        public int DeviceId { get; set; }
+        public long DeviceId { get; set; }
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public DateTime ManufacturDate { get; set; }

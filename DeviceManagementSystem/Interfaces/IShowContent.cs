@@ -1,4 +1,4 @@
-﻿namespace DeviceManagementSystem.Services.Interfaces
+﻿namespace DeviceManagementSystem.Interfaces
 {
     public interface IShowContent
     {

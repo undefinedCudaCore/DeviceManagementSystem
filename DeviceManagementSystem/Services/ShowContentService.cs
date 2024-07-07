@@ -1,5 +1,5 @@
 ﻿using DeviceManagementSystem.Data;
-using DeviceManagementSystem.Services.Interfaces;
+using DeviceManagementSystem.Interfaces;
 
 namespace DeviceManagementSystem.Services
 {

@@ -1,0 +1,83 @@
+﻿using DeviceManagementSystem.Data;
+using DeviceManagementSystem.Database;
+using DeviceManagementSystem.Helpers;
+using DeviceManagementSystem.Interfaces;
+using DeviceManagementSystem.Models;
+
+namespace DeviceManagementSystem.Repositories
+{
+    internal class DeviceRepository : IDeviceRepository
+    {
+        public List<Device> GetAllDevices()
+        {
+            try
+            {
+                using (DeviceContext db = new DeviceContext())
+                {
+                    return db.Devices.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: ${DataContent.ExeptionData.GetAllDevicesException} {ex.Message}");
+            }
+        }
+        public Device GetDeviceModel(string deviceModel)
+        {
+            try
+            {
+                using (DeviceContext db = new DeviceContext())
+                {
+                    return db.Devices.FirstOrDefault(d => d.Model == deviceModel);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: ${DataContent.ExeptionData.GetDeviceByModelException} {ex.Message}");
+            }
+        }
+        public void AddNewDevice(long deviceId, string model, string manufacturer, DateTime manufacturerDate)
+        {
+            try
+            {
+                using (DeviceContext db = new DeviceContext())
+                {
+                    var newDevice = new Device
+                    {
+                        DeviceId = deviceId,
+                        Model = model,
+                        Manufacturer = manufacturer,
+                        ManufacturDate = manufacturerDate,
+                        Date = DateTime.Now
+                    };
+                    db.Devices.Add(newDevice);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: ${DataContent.ExeptionData.AddNewDeviceException} {ex.Message}");
+            }
+        }
+        public void DeleteDeviceById(long deviceId)
+        {
+            try
+            {
+                using (DeviceContext db = new DeviceContext())
+                {
+                    var deviceToDelete = db.Devices.FirstOrDefault(d => d.DeviceId == deviceId);
+                    if (deviceToDelete != null)
+                    {
+                        db.Devices.Remove(deviceToDelete);
+                        db.SaveChanges();
+                    }
+                    else { ColorHelper.RedColorTextEnter(DataContent.ErrorData.DeviceNotFound); }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: ${DataContent.ExeptionData.DeleteDeviceByIdException} {ex.Message}");
+            }
+        }
+    }
+}

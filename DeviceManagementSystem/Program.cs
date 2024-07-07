@@ -1,6 +1,5 @@
-﻿using DeviceManagementSystem.Database;
+﻿using DeviceManagementSystem.Interfaces;
 using DeviceManagementSystem.Services;
-using DeviceManagementSystem.Services.Interfaces;
 
 namespace DeviceManagementSystem
 {
@@ -8,42 +7,37 @@ namespace DeviceManagementSystem
     {
         static void Main(string[] args)
         {
-            using (var db = new DeviceContext())
+            bool cycle = true;
+
+            while (cycle)
             {
-                db.Database.EnsureCreated();
+                IShowContent showContent = new ShowContentService();
+                showContent.ShowMainMenu();
 
-                bool cycle = true;
+                string option = Console.ReadLine().ToLower();
 
-                while (cycle)
+                switch (option)
                 {
-                    IShowContent showContent = new ShowContentService();
-                    showContent.ShowMainMenu();
+                    case "1":
 
-                    string option = Console.ReadLine().ToLower();
+                        break;
+                    case "2":
 
-                    switch (option)
-                    {
-                        case "1":
+                        break;
+                    case "3":
 
-                            break;
-                        case "2":
+                        break;
+                    case "4":
 
-                            break;
-                        case "3":
-
-                            break;
-                        case "4":
-
-                            break;
-                        case "quit":
-                            Environment.Exit(0);
-                            break;
-                        case "exit":
-                            Environment.Exit(0);
-                            break;
-                        default:
-                            break;
-                    }
+                        break;
+                    case "quit":
+                        Environment.Exit(0);
+                        break;
+                    case "exit":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
