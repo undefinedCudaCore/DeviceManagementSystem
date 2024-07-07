@@ -1,4 +1,5 @@
 ﻿using DeviceManagementSystem.Data;
+using DeviceManagementSystem.Helpers;
 using DeviceManagementSystem.Interfaces;
 using DeviceManagementSystem.Models;
 
@@ -47,6 +48,12 @@ namespace DeviceManagementSystem.Services
                 $"Date the device was added to list: {d.Date.ToString("yyyy-MM-dd")}."));
 
             PrintContent(DataContent.BasicData.Margin);
+
+            if (devices.Count <= 0)
+            {
+                ColorHelper.RedColorTextEnter(DataContent.BasicData.NoDeviceFound);
+            }
+
             PrintContent(DataContent.BasicData.PressKeyToReturnToMainMenu);
             Console.ReadKey();
         }
