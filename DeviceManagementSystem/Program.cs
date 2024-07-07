@@ -1,10 +1,15 @@
-﻿namespace DeviceManagementSystem
+﻿using DeviceManagementSystem.Database;
+
+namespace DeviceManagementSystem
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            using (var db = new DeviceContext())
+            {
+                db.Database.EnsureCreated();
+            }
         }
     }
 }
