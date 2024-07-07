@@ -28,7 +28,7 @@ namespace DeviceManagementSystem.Database
                 entity.HasKey(d => d.DeviceId);
 
                 entity.Property(d => d.DeviceId)
-                .HasColumnOrder(1);
+                    .HasColumnOrder(1);
                 entity.Property(d => d.Model)
                     .IsRequired()
                     .HasMaxLength(100)

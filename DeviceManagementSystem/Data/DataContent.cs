@@ -5,7 +5,10 @@
         internal static class BasicData
         {
             internal static readonly string EnterSelection = "Type your selection and press ENTER:";
+            internal static readonly string EnterDeviceSerialNumber = "Type device serial number and press ENTER:";
             internal static readonly string EnterDeviceModel = "Type device model and press ENTER:";
+            internal static readonly string EnterDeviceManufacturer = "Type device manufacturer and press ENTER:";
+            internal static readonly string EnterDeviceManufactureDate = "Type device manufacture date and press ENTER:";
             internal static readonly string EnterDeviceId = "Type device ID and press ENTER:";
             internal static readonly string PressKeyToReturnToMainMenu = "Press any key to return to the main menu.";
             internal static readonly string ListOfDevices = "You will find bellow list of all devices in database:";

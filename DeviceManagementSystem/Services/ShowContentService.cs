@@ -35,7 +35,9 @@ namespace DeviceManagementSystem.Services
             Console.Clear();
             PrintContent(DataContent.BasicData.ListOfDevices);
 
-            devices
+            var sortedDevices = devices.OrderByDescending(d => d.DeviceId).ToList();
+
+            sortedDevices
                 .ForEach(d =>
 
                 Console.WriteLine($"{DataContent.BasicData.Margin}\n" +
