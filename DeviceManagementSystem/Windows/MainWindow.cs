@@ -72,7 +72,7 @@ namespace DeviceManagementSystem.Windows
                         showContent.PrintContent(DataContent.BasicData.Margin);
                         CheckInputHelper.CheckInput(out string input);
 
-                        showContent.ShowDevice(deviceService.GetDeviceByModelName(input.ToUpper()));
+                        showContent.ShowAllDevices(deviceService.GetDeviceByModelName(input.ToUpper()));
                         break;
                     case "4":
                         Console.Clear();

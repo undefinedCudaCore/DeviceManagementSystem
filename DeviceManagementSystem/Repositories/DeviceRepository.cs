@@ -24,14 +24,14 @@ namespace DeviceManagementSystem.Repositories
             }
         }
 
-        public Device GetDeviceByModel(string deviceModel)
+        public List<Device> GetDeviceByModel(string deviceModel)
         {
             try
             {
                 using (DeviceContext db = new DeviceContext())
                 {
                     db.Database.EnsureCreated();
-                    return db.Devices.FirstOrDefault(d => d.Model == deviceModel);
+                    return db.Devices.Where(d => d.Model == deviceModel).ToList();
                 }
             }
             catch (Exception ex)

@@ -28,13 +28,14 @@ namespace DeviceManagementSystem.Services
             }
         }
 
-        public Device GetDeviceByModelName(string model)
+        public List<Device> GetDeviceByModelName(string model)
         {
             try
             {
-                var device = _deviceRepository.GetDeviceByModel(model);
+                var foundedDeviceList = new List<Device>();
+                var devices = _deviceRepository.GetDeviceByModel(model);
 
-                if (device == null)
+                if (devices == null)
                 {
                     _showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
                     _showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
@@ -42,20 +43,25 @@ namespace DeviceManagementSystem.Services
                     Redirects.RedirectTo.MainMenu();
                 }
 
-                if (device.Model == model)
+                foreach (var device in devices)
                 {
-                    return device;
-                }
-                else
-                {
-                    return new Device()
+
+                    if (device.Model == model)
                     {
-                        DeviceId = 0,
-                        Model = "Empty..",
-                        Manufacturer = "Empty..",
-                        ManufactureDate = DateTime.Now,
-                    };
+                        foundedDeviceList.Add(device);
+                    }
+                    else
+                    {
+                        foundedDeviceList.Add(new Device()
+                        {
+                            DeviceId = 0,
+                            Model = "Empty..",
+                            Manufacturer = "Empty..",
+                            ManufactureDate = DateTime.Now,
+                        });
+                    }
                 }
+                return foundedDeviceList;
             }
             catch (Exception ex)
             {
