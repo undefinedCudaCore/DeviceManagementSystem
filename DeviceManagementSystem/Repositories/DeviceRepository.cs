@@ -23,7 +23,7 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.GetAllDevicesException} {ex.Message}");
             }
         }
-        public Device GetDeviceModel(string deviceModel)
+        public Device GetDeviceByModel(string deviceModel)
         {
             try
             {

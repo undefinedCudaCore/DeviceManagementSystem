@@ -7,7 +7,7 @@ namespace DeviceManagementSystem.Helpers
 {
     internal static class CheckInputHelper
     {
-        public static void CheckInput(out int newInput)
+        public static void CheckInput(out long newInput)
         {
             IShowContent showContent = new ShowContentService();
             string input = Console.ReadLine();
@@ -79,7 +79,7 @@ namespace DeviceManagementSystem.Helpers
             double.TryParse(input, out newInput);
         }
 
-        public static void CheckInput(string input, out int newInput)
+        public static void CheckInput(string input, out long newInput)
         {
             IShowContent showContent = new ShowContentService();
 
@@ -102,10 +102,10 @@ namespace DeviceManagementSystem.Helpers
             newInput = ConvertInputToInt(input);
         }
 
-        private static int ConvertInputToInt(string input)
+        private static long ConvertInputToInt(string input)
         {
             IShowContent showContent = new ShowContentService();
-            bool succConvertedToInt = int.TryParse(input, out int convertedNumber);
+            bool succConvertedToInt = long.TryParse(input, out long convertedNumber);
 
             if (!succConvertedToInt)
             {
@@ -118,10 +118,10 @@ namespace DeviceManagementSystem.Helpers
             return convertedNumber;
         }
 
-        public static int ConvertInputToInt(string input, out bool succConvertedToInt)
+        public static long ConvertInputToInt(string input, out bool succConvertedToInt)
         {
             IShowContent showContent = new ShowContentService();
-            succConvertedToInt = int.TryParse(input, out int convertedNumber);
+            succConvertedToInt = long.TryParse(input, out long convertedNumber);
 
             if (!succConvertedToInt)
             {
