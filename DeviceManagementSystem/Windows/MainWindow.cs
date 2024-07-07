@@ -27,12 +27,15 @@ namespace DeviceManagementSystem.Windows
 
                         showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
                         CheckInputHelper.CheckInput(out int serialNumber);
+                        CheckLength.InputLenthNotLongerEleven(serialNumber.ToString());
 
                         showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
                         CheckInputHelper.CheckInput(out string model);
+                        CheckLength.InputLenthNotLongerOneHundred(model);
 
                         showContent.PrintContent(DataContent.BasicData.EnterDeviceManufacturer);
                         CheckInputHelper.CheckInput(out string manufacturer);
+                        CheckLength.InputLenthNotLongerOneHundredFifty(manufacturer);
 
                         showContent.PrintContent(DataContent.BasicData.EnterDeviceManufactureDate);
                         showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
