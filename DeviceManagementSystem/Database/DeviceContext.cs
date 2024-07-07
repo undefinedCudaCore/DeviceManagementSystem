@@ -1,4 +1,5 @@
-﻿using DeviceManagementSystem.Models;
+﻿using DeviceManagementSystem.Database.InitialData;
+using DeviceManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeviceManagementSystem.Database
@@ -42,6 +43,8 @@ namespace DeviceManagementSystem.Database
                 entity.Property(s => s.Date)
                     .HasColumnType("datetime");
             });
+
+            modelBuilder.Entity<Device>().HasData(DeviceData.DataSeed);
         }
     }
 }

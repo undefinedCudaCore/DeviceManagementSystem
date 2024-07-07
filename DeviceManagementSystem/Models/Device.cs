@@ -2,7 +2,20 @@
 {
     internal class Device
     {
-        internal int DeviceId { get; set; }
+        public Device(int deviceId, string model, string manufacturer, DateTime manufacturDate, DateTime date)
+        {
+            DeviceId = deviceId;
+            Model = model;
+            Manufacturer = manufacturer;
+            ManufacturDate = manufacturDate;
+            Date = date;
+        }
+
+        public Device()
+        {
+        }
+
+        public int DeviceId { get; set; }
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public DateTime ManufacturDate { get; set; }
