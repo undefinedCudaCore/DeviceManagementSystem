@@ -23,27 +23,43 @@ namespace DeviceManagementSystem.Windows
                 switch (option)
                 {
                     case "1":
-                        Console.Clear();
+                        try
+                        {
+                            Console.Clear();
 
-                        showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
-                        CheckInputHelper.CheckInput(out int serialNumber);
-                        CheckLength.InputLenthNotLongerEleven(serialNumber.ToString());
+                            showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
+                            CheckInputHelper.CheckInput(out int serialNumber);
+                            CheckLength.InputLenthNotLongerEleven(serialNumber.ToString());
 
-                        showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
-                        CheckInputHelper.CheckInput(out string model);
-                        CheckLength.InputLenthNotLongerOneHundred(model);
+                            showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+                            CheckInputHelper.CheckInput(out string model);
+                            CheckLength.InputLenthNotLongerOneHundred(model);
 
-                        showContent.PrintContent(DataContent.BasicData.EnterDeviceManufacturer);
-                        CheckInputHelper.CheckInput(out string manufacturer);
-                        CheckLength.InputLenthNotLongerOneHundredFifty(manufacturer);
+                            showContent.PrintContent(DataContent.BasicData.EnterDeviceManufacturer);
+                            CheckInputHelper.CheckInput(out string manufacturer);
+                            CheckLength.InputLenthNotLongerOneHundredFifty(manufacturer);
 
-                        showContent.PrintContent(DataContent.BasicData.EnterDeviceManufactureDate);
-                        showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
-                        CheckInputHelper.CheckInput(out string manufactureDate);
+                            showContent.PrintContent(DataContent.BasicData.EnterDeviceManufactureDate);
+                            showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
+                            CheckInputHelper.CheckInput(out string manufactureDate);
 
-                        var parsedManufactureDateDate = DateTime.Parse(manufactureDate);
 
-                        deviceService.AddNewDevice(serialNumber, model.ToUpper(), manufacturer, parsedManufactureDateDate);
+                            var parsedManufactureDateDate = DateTime.Parse(manufactureDate);
+
+                            deviceService.AddNewDevice(serialNumber, model.ToUpper(), manufacturer, parsedManufactureDateDate);
+                        }
+                        catch (FormatException)
+                        {
+                            showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                            showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
+                            showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                            Thread.Sleep(3000);
+                            Redirects.RedirectTo.MainMenu();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("aaanbv");
+                        }
 
                         break;
                     case "2":

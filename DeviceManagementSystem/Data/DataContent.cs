@@ -28,7 +28,7 @@
             internal static readonly string InputTooLong100 = "You can't create a new record, input have more than 100 symbols.";
             internal static readonly string InputTooLong150 = "You can't create a new record, input have more than 150 symbols.";
             internal static readonly string DeviceNotFound = "Device Not Found";
-            internal static readonly string SomethingWrong = "Something went wrong when the program tried to add the device..";
+            internal static readonly string SomethingWrong = "Something went wrong when the program tried to add the device.. Try again later..";
             internal static readonly string WrongSerialNo = "The entered device serial number does not correspond to the serial number in the database.";
         }
 
