@@ -42,6 +42,9 @@ namespace DeviceManagementSystem.Database
                     .HasColumnType("datetime");
                 entity.Property(s => s.Date)
                     .HasColumnType("datetime");
+                entity.Property(d => d.SerialNumber)
+                    .HasMaxLength(11)
+                    .HasColumnOrder(5);
             });
 
             modelBuilder.Entity<Device>().HasData(DeviceData.DataSeed);

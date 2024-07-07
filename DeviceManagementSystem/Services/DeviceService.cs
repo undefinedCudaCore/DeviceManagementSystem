@@ -13,8 +13,7 @@ namespace DeviceManagementSystem.Services
         }
 
         private IDeviceRepository _deviceRepository = new DeviceRepository();
-
-        IShowContent showContent = new ShowContentService();
+        private IShowContent showContent = new ShowContentService();
 
         public List<Device> GetAllDevices()
         {

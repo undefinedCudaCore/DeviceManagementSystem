@@ -6,7 +6,6 @@ namespace DeviceManagementSystem.Services
 {
     public class ShowContentService : IShowContent
     {
-        private IDevice _deviceService = new DeviceService();
 
         public void ShowMainMenu()
         {

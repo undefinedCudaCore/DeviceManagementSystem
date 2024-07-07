@@ -21,16 +21,16 @@ namespace DeviceManagementSystem.Windows
                 switch (option)
                 {
                     case "1":
-
+                        Console.WriteLine("AD NEW DEVICE");
                         break;
                     case "2":
-                        showContent.ShowAllDevices();
+                        showContent.ShowAllDevices(deviceService.GetAllDevices());
                         break;
                     case "3":
-
+                        Console.WriteLine("Search for a device by model");
                         break;
                     case "4":
-
+                        Console.WriteLine("Delete a device by serial number");
                         break;
                     case "quit":
                         Environment.Exit(0);
