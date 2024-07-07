@@ -87,5 +87,45 @@ namespace DeviceManagementSystem.Services
                 throw new Exception($"Exception in: {DataContent.ExeptionData.AddNewDeviceException} {ex.Message}");
             }
         }
+
+        private bool CheckBySerialNumberDoesDeviceExists(int serialNumber)
+        {
+            try
+            {
+                var device = _deviceRepository.GetDeviceBySerialNumber(serialNumber);
+                if (device == null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: {DataContent.ExeptionData.GetDeviceBySerialNumberException} {ex.Message}");
+            }
+        }
+
+        public void RemoveDevice(int serialNumber)
+        {
+            try
+            {
+                if (!CheckBySerialNumberDoesDeviceExists(serialNumber))
+                {
+                    ColorHelper.RedColorTextEnter(DataContent.ErrorData.WrongSerialNo);
+                    return;
+                }
+
+                _deviceRepository.DeleteDeviceBySerialNumber(serialNumber);
+
+                if (!CheckBySerialNumberDoesDeviceExists(serialNumber))
+                {
+                    ColorHelper.GreenColorTextEnter(DataContent.BasicData.SuccDeletedDevice);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: {DataContent.ExeptionData.DeleteDeviceBySerialNrException} {ex.Message}");
+            }
+        }
     }
 }

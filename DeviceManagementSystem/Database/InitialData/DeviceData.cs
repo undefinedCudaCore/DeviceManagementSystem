@@ -13,6 +13,7 @@ namespace DeviceManagementSystem.Database.InitialData
                 Manufacturer = "Nothing",
                 ManufactureDate = new DateTime(2023, 6, 10),
                 Date = DateTime.Now,
+                UniqueSerialNumber = 19854,
             },
             new Device
             {
@@ -21,6 +22,7 @@ namespace DeviceManagementSystem.Database.InitialData
                 Manufacturer = "OnePlus",
                 ManufactureDate = new DateTime(2022, 5, 14),
                 Date = DateTime.Now,
+                UniqueSerialNumber = 2482,
             },
             new Device
             {
@@ -29,6 +31,7 @@ namespace DeviceManagementSystem.Database.InitialData
                 Manufacturer = "Apple",
                 ManufactureDate = new DateTime(2024, 1, 15),
                 Date = DateTime.Now,
+                UniqueSerialNumber = 55231,
             },
             new Device
             {
@@ -37,6 +40,7 @@ namespace DeviceManagementSystem.Database.InitialData
                 Manufacturer = "Samsung",
                 ManufactureDate = new DateTime(2024, 10, 26),
                 Date = DateTime.Now,
+                UniqueSerialNumber = 898551,
             },
         };
     }
