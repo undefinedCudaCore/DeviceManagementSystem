@@ -13,7 +13,9 @@
             internal static readonly string PressKeyToReturnToMainMenu = "Press any key to return to the main menu.";
             internal static readonly string ListOfDevices = "You will find bellow list of all devices in database:";
             internal static readonly string Margin = "---------------------------------------------------------";
-            internal static string DeviceSuccAdded = "The device was successfully added to the list.";
+            internal static readonly string DeviceSuccAdded = "The device was successfully added to the list.";
+            internal static readonly string ManufactureDateSample = "Enter the date as in the example: 2022-12-31";
+
         }
         internal static class ErrorData
         {

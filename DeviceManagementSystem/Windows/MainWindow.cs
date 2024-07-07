@@ -25,7 +25,22 @@ namespace DeviceManagementSystem.Windows
                     case "1":
                         Console.Clear();
 
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
+                        CheckInputHelper.CheckInput(out int serialNumber);
 
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+                        CheckInputHelper.CheckInput(out string model);
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceManufacturer);
+                        CheckInputHelper.CheckInput(out string manufacturer);
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceManufactureDate);
+                        showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
+                        CheckInputHelper.CheckInput(out string manufactureDate);
+
+                        var parsedManufactureDateDate = DateTime.Parse(manufactureDate);
+
+                        deviceService.AddNewDevice(serialNumber, model, manufacturer, parsedManufactureDateDate);
 
                         break;
                     case "2":
@@ -38,7 +53,7 @@ namespace DeviceManagementSystem.Windows
                         showContent.PrintContent(DataContent.BasicData.Margin);
                         CheckInputHelper.CheckInput(out string input);
 
-                        showContent.ShowDevice(deviceService.GetDeviceByModelName(input));
+                        showContent.ShowDevice(deviceService.GetDeviceByModelName(input.ToUpper()));
                         break;
                     case "4":
                         Console.WriteLine("Delete a device by serial number");
