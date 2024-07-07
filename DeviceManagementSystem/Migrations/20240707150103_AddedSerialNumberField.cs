@@ -6,54 +6,52 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DeviceManagementSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedSerialNumberDeviceClassProperty : Migration
+    public partial class AddedSerialNumberField : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "SerialNumber",
+                name: "UniqueSerialNumber",
                 table: "Devices",
                 type: "int",
-                maxLength: 11,
                 nullable: false,
-                defaultValue: 0)
-                .Annotation("Relational:ColumnOrder", 5);
+                defaultValue: 0);
 
             migrationBuilder.UpdateData(
                 table: "Devices",
                 keyColumn: "DeviceId",
                 keyValue: 1L,
-                columns: new[] { "Date", "SerialNumber" },
-                values: new object[] { new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9091), 0 });
+                columns: new[] { "Date", "UniqueSerialNumber" },
+                values: new object[] { new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2078), 0 });
 
             migrationBuilder.UpdateData(
                 table: "Devices",
                 keyColumn: "DeviceId",
                 keyValue: 2L,
-                columns: new[] { "Date", "SerialNumber" },
-                values: new object[] { new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9123), 0 });
+                columns: new[] { "Date", "UniqueSerialNumber" },
+                values: new object[] { new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2111), 0 });
 
             migrationBuilder.UpdateData(
                 table: "Devices",
                 keyColumn: "DeviceId",
                 keyValue: 3L,
-                columns: new[] { "Date", "SerialNumber" },
-                values: new object[] { new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9125), 0 });
+                columns: new[] { "Date", "UniqueSerialNumber" },
+                values: new object[] { new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2113), 0 });
 
             migrationBuilder.UpdateData(
                 table: "Devices",
                 keyColumn: "DeviceId",
                 keyValue: 4L,
-                columns: new[] { "Date", "SerialNumber" },
-                values: new object[] { new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9126), 0 });
+                columns: new[] { "Date", "UniqueSerialNumber" },
+                values: new object[] { new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2115), 0 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "SerialNumber",
+                name: "UniqueSerialNumber",
                 table: "Devices");
 
             migrationBuilder.UpdateData(

@@ -38,7 +38,7 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.GetDeviceByModelException} {ex.Message}");
             }
         }
-        public void AddNewDevice(string model, string manufacturer, DateTime manufacturerDate)
+        public void AddNewDevice(int serialNumber, string model, string manufacturer, DateTime manufacturerDate)
         {
             try
             {
@@ -50,7 +50,8 @@ namespace DeviceManagementSystem.Repositories
                         Model = model,
                         Manufacturer = manufacturer,
                         ManufactureDate = manufacturerDate,
-                        Date = DateTime.Now
+                        Date = DateTime.Now,
+                        UniqueSerialNumber = serialNumber,
                     };
                     db.Devices.Add(newDevice);
                     db.SaveChanges();

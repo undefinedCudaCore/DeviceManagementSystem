@@ -42,6 +42,7 @@ namespace DeviceManagementSystem.Services
 
                 Console.WriteLine($"{DataContent.BasicData.Margin}\n" +
                 $"Device: {d.DeviceId} - {d.Model} ({d.Manufacturer});\n " +
+                $"Serial number: {d.UniqueSerialNumber};\n " +
                 $"Manufacture date: {d.ManufactureDate.ToString("yyyy-MM-dd")};\n " +
                 $"Date the device was added to list: {d.Date.ToString("yyyy-MM-dd")}."));
 
@@ -57,6 +58,7 @@ namespace DeviceManagementSystem.Services
 
             Console.WriteLine($"{DataContent.BasicData.Margin}\n" +
             $"Device: {device.DeviceId} - {device.Model} ({device.Manufacturer});\n " +
+            $"Serial number: {device.UniqueSerialNumber};\n " +
             $"Manufacture date: {device.ManufactureDate.ToString("yyyy-MM-dd")};\n " +
             $"Date the device was added to list: {device.Date.ToString("yyyy-MM-dd")}.");
 

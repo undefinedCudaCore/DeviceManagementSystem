@@ -13,16 +13,21 @@
             internal static readonly string PressKeyToReturnToMainMenu = "Press any key to return to the main menu.";
             internal static readonly string ListOfDevices = "You will find bellow list of all devices in database:";
             internal static readonly string Margin = "---------------------------------------------------------";
+            internal static readonly string DeviceSuccAdded = "The device was successfully added to the list.";
+            internal static readonly string ManufactureDateSample = "Enter the date as in the example: 2022-12-31";
+
         }
         internal static class ErrorData
         {
             internal static readonly string WrongInput = "Wrong user input.";
             internal static readonly string RedirectToMainMenu = "Redirecting to the main menu.";
             internal static readonly string DeviceAlredyExists = "You can't create a new device, device already exists.";
+            internal static readonly string InputTooLong11 = "You can't create a new record, input have more than 11 symbols.";
             internal static readonly string InputTooLong100 = "You can't create a new record, input have more than 100 symbols.";
             internal static readonly string InputTooLong150 = "You can't create a new record, input have more than 150 symbols.";
             internal static readonly string DeviceNotFound = "Device Not Found";
             internal static readonly string SomethingWrong = "Something went wrong when the program tried to add the device..";
+
         }
 
         internal static class ExeptionData

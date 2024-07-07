@@ -1,4 +1,6 @@
-﻿using DeviceManagementSystem.Interfaces;
+﻿using DeviceManagementSystem.Data;
+using DeviceManagementSystem.Helpers;
+using DeviceManagementSystem.Interfaces;
 using DeviceManagementSystem.Services;
 
 namespace DeviceManagementSystem.Windows
@@ -21,13 +23,37 @@ namespace DeviceManagementSystem.Windows
                 switch (option)
                 {
                     case "1":
-                        Console.WriteLine("AD NEW DEVICE");
+                        Console.Clear();
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
+                        CheckInputHelper.CheckInput(out int serialNumber);
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+                        CheckInputHelper.CheckInput(out string model);
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceManufacturer);
+                        CheckInputHelper.CheckInput(out string manufacturer);
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceManufactureDate);
+                        showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
+                        CheckInputHelper.CheckInput(out string manufactureDate);
+
+                        var parsedManufactureDateDate = DateTime.Parse(manufactureDate);
+
+                        deviceService.AddNewDevice(serialNumber, model, manufacturer, parsedManufactureDateDate);
+
                         break;
                     case "2":
                         showContent.ShowAllDevices(deviceService.GetAllDevices());
                         break;
                     case "3":
-                        Console.WriteLine("Search for a device by model");
+                        Console.Clear();
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+                        showContent.PrintContent(DataContent.BasicData.Margin);
+                        CheckInputHelper.CheckInput(out string input);
+
+                        showContent.ShowDevice(deviceService.GetDeviceByModelName(input.ToUpper()));
                         break;
                     case "4":
                         Console.WriteLine("Delete a device by serial number");
