@@ -5,7 +5,10 @@
         internal static class BasicData
         {
             internal static readonly string EnterSelection = "Type your selection and press ENTER:";
+            internal static readonly string EnterDeviceSerialNumber = "Type device serial number and press ENTER:";
             internal static readonly string EnterDeviceModel = "Type device model and press ENTER:";
+            internal static readonly string EnterDeviceManufacturer = "Type device manufacturer and press ENTER:";
+            internal static readonly string EnterDeviceManufactureDate = "Type device manufacture date and press ENTER:";
             internal static readonly string EnterDeviceId = "Type device ID and press ENTER:";
             internal static readonly string PressKeyToReturnToMainMenu = "Press any key to return to the main menu.";
             internal static readonly string ListOfDevices = "You will find bellow list of all devices in database:";
@@ -19,6 +22,7 @@
             internal static readonly string InputTooLong100 = "You can't create a new record, input have more than 100 symbols.";
             internal static readonly string InputTooLong150 = "You can't create a new record, input have more than 150 symbols.";
             internal static readonly string DeviceNotFound = "Device Not Found";
+            internal static readonly string SomethingWrong = "Something went wrong when the program tried to add the device..";
         }
 
         internal static class ExeptionData

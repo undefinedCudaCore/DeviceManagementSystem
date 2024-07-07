@@ -19,13 +19,13 @@ namespace DeviceManagementSystem.Helpers
                 RedirectTo.MainMenu();
             }
         }
-        public static void InputLenthNotLongerThanOneHundredFifty(string input)
+        public static void InputLenthNotLongerOneHundredFifty(string input)
         {
             IShowContent showContent = new ShowContentService();
 
             if (input.Length > 150)
             {
-                showContent.PrintContent(DataContent.ErrorData.InputTooLong150);
+                showContent.PrintContent(DataContent.ErrorData.InputTooLong100);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
                 Thread.Sleep(1000);
                 RedirectTo.MainMenu();

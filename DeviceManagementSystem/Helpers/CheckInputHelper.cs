@@ -28,7 +28,7 @@ namespace DeviceManagementSystem.Helpers
                 RedirectTo.MainMenu();
             }
 
-            newInput = ConvertInputToLong(input);
+            newInput = ConvertInputToInt(input);
         }
 
         public static void CheckInput(out string newInput)
@@ -99,10 +99,10 @@ namespace DeviceManagementSystem.Helpers
                 RedirectTo.MainMenu();
             }
 
-            newInput = ConvertInputToLong(input);
+            newInput = ConvertInputToInt(input);
         }
 
-        private static long ConvertInputToLong(string input)
+        private static long ConvertInputToInt(string input)
         {
             IShowContent showContent = new ShowContentService();
             bool succConvertedToInt = long.TryParse(input, out long convertedNumber);
@@ -118,10 +118,10 @@ namespace DeviceManagementSystem.Helpers
             return convertedNumber;
         }
 
-        public static int ConvertInputToInt(string input, out bool succConvertedToInt)
+        public static long ConvertInputToInt(string input, out bool succConvertedToInt)
         {
             IShowContent showContent = new ShowContentService();
-            succConvertedToInt = int.TryParse(input, out int convertedNumber);
+            succConvertedToInt = long.TryParse(input, out long convertedNumber);
 
             if (!succConvertedToInt)
             {

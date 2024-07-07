@@ -23,7 +23,7 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.GetAllDevicesException} {ex.Message}");
             }
         }
-        public Device GetDeviceModel(string deviceModel)
+        public Device GetDeviceByModel(string deviceModel)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.GetDeviceByModelException} {ex.Message}");
             }
         }
-        public void AddNewDevice(long deviceId, string model, string manufacturer, DateTime manufacturerDate)
+        public void AddNewDevice(string model, string manufacturer, DateTime manufacturerDate)
         {
             try
             {
@@ -47,7 +47,6 @@ namespace DeviceManagementSystem.Repositories
                     db.Database.EnsureCreated();
                     var newDevice = new Device
                     {
-                        DeviceId = deviceId,
                         Model = model,
                         Manufacturer = manufacturer,
                         ManufactureDate = manufacturerDate,

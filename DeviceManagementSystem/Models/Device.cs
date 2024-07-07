@@ -16,6 +16,7 @@
         }
 
         public long DeviceId { get; set; }
+        internal int SerialNumber { get; set; }
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public DateTime ManufactureDate { get; set; }

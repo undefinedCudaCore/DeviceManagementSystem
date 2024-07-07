@@ -1,11 +1,11 @@
 ﻿using DeviceManagementSystem.Data;
 using DeviceManagementSystem.Interfaces;
+using DeviceManagementSystem.Models;
 
 namespace DeviceManagementSystem.Services
 {
     public class ShowContentService : IShowContent
     {
-        private IDevice _deviceService = new DeviceService();
 
         public void ShowMainMenu()
         {
@@ -30,18 +30,35 @@ namespace DeviceManagementSystem.Services
             Console.WriteLine(content + id);
         }
 
-        public void ShowAllDevices()
+        public void ShowAllDevices(List<Device> devices)
         {
             Console.Clear();
             PrintContent(DataContent.BasicData.ListOfDevices);
 
-            _deviceService.GetAllDevices()
+            var sortedDevices = devices.OrderByDescending(d => d.DeviceId).ToList();
+
+            sortedDevices
                 .ForEach(d =>
 
                 Console.WriteLine($"{DataContent.BasicData.Margin}\n" +
                 $"Device: {d.DeviceId} - {d.Model} ({d.Manufacturer});\n " +
-                $"Manufacture date: ${d.ManufactureDate.ToString("yyyy-MM-dd")};\n " +
-                $"Date the device was added to list: ${d.Date.ToString("yyyy-MM-dd")}."));
+                $"Manufacture date: {d.ManufactureDate.ToString("yyyy-MM-dd")};\n " +
+                $"Date the device was added to list: {d.Date.ToString("yyyy-MM-dd")}."));
+
+            PrintContent(DataContent.BasicData.Margin);
+            PrintContent(DataContent.BasicData.PressKeyToReturnToMainMenu);
+            Console.ReadKey();
+        }
+
+        public void ShowDevice(Device device)
+        {
+            Console.Clear();
+            PrintContent(DataContent.BasicData.ListOfDevices);
+
+            Console.WriteLine($"{DataContent.BasicData.Margin}\n" +
+            $"Device: {device.DeviceId} - {device.Model} ({device.Manufacturer});\n " +
+            $"Manufacture date: {device.ManufactureDate.ToString("yyyy-MM-dd")};\n " +
+            $"Date the device was added to list: {device.Date.ToString("yyyy-MM-dd")}.");
 
             PrintContent(DataContent.BasicData.Margin);
             PrintContent(DataContent.BasicData.PressKeyToReturnToMainMenu);
