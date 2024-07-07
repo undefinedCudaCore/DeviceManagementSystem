@@ -1,4 +1,6 @@
-﻿using DeviceManagementSystem.Interfaces;
+﻿using DeviceManagementSystem.Data;
+using DeviceManagementSystem.Helpers;
+using DeviceManagementSystem.Interfaces;
 using DeviceManagementSystem.Services;
 
 namespace DeviceManagementSystem.Windows
@@ -27,7 +29,13 @@ namespace DeviceManagementSystem.Windows
                         showContent.ShowAllDevices(deviceService.GetAllDevices());
                         break;
                     case "3":
-                        Console.WriteLine("Search for a device by model");
+                        Console.Clear();
+
+                        showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+                        showContent.PrintContent(DataContent.BasicData.Margin);
+                        CheckInputHelper.CheckInput(out string input);
+
+                        showContent.ShowDevice(deviceService.GetDeviceByModelName(input));
                         break;
                     case "4":
                         Console.WriteLine("Delete a device by serial number");
