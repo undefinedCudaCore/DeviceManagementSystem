@@ -14,7 +14,7 @@ namespace DeviceManagementSystem.Services
         }
 
         private IDeviceRepository _deviceRepository = new DeviceRepository();
-        private IShowContent _showContent = new ShowContentService();
+        private IShowContent showContent = new ShowContentService();
 
         public List<Device> GetAllDevices()
         {
@@ -37,8 +37,8 @@ namespace DeviceManagementSystem.Services
 
                 if (devices == null)
                 {
-                    _showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
-                    _showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                    showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                    showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
                     Thread.Sleep(1000);
                     Redirects.RedirectTo.MainMenu();
                 }
@@ -85,7 +85,7 @@ namespace DeviceManagementSystem.Services
                 }
                 else
                 {
-                    _showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                    showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
                 }
             }
             catch (Exception ex)
@@ -132,6 +132,77 @@ namespace DeviceManagementSystem.Services
             {
                 throw new Exception($"Exception in: {DataContent.ExeptionData.DeleteDeviceBySerialNrException} {ex.Message}");
             }
+        }
+
+        public void ExecuteAddNewDevice()
+        {
+            try
+            {
+                Console.Clear();
+
+                showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
+                CheckInputHelper.CheckInput(out int serialNumber);
+                CheckLength.InputLenthNotLongerEleven(serialNumber.ToString());
+
+                showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+                CheckInputHelper.CheckInput(out string model);
+                CheckLength.InputLenthNotLongerOneHundred(model);
+
+                showContent.PrintContent(DataContent.BasicData.EnterDeviceManufacturer);
+                CheckInputHelper.CheckInput(out string manufacturer);
+                CheckLength.InputLenthNotLongerOneHundredFifty(manufacturer);
+
+                showContent.PrintContent(DataContent.BasicData.EnterDeviceManufactureDate);
+                showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
+                CheckInputHelper.CheckInput(out string manufactureDate);
+
+
+                var parsedManufactureDateDate = DateTime.Parse(manufactureDate);
+
+                AddNewDevice(serialNumber, model.ToUpper(), manufacturer, parsedManufactureDateDate);
+            }
+            catch (FormatException)
+            {
+                showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                showContent.PrintContent(DataContent.BasicData.ManufactureDateSample);
+                showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                Thread.Sleep(3000);
+                Redirects.RedirectTo.MainMenu();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("aaanbv");
+            }
+        }
+
+        public void ExecuteListOfAllDevices()
+        {
+            showContent.ShowAllDevices(GetAllDevices());
+        }
+
+        public void ExecuteSearchForADeviceByModelName()
+        {
+            Console.Clear();
+
+            showContent.PrintContent(DataContent.BasicData.EnterDeviceModel);
+            showContent.PrintContent(DataContent.BasicData.Margin);
+            CheckInputHelper.CheckInput(out string input);
+
+            showContent.ShowAllDevices(GetDeviceByModelName(input.ToUpper()));
+        }
+
+        public void DeleteADeviceBySerialNumber()
+        {
+            Console.Clear();
+
+            showContent.PrintContent(DataContent.BasicData.RemoveDevice);
+            showContent.PrintContent(DataContent.BasicData.EnterDeviceSerialNumber);
+            showContent.PrintContent(DataContent.BasicData.Margin);
+
+            CheckInputHelper.CheckInput(out int serialNumberToRemove);
+            CheckLength.InputLenthNotLongerEleven(serialNumberToRemove.ToString());
+
+            RemoveDevice(serialNumberToRemove);
         }
     }
 }

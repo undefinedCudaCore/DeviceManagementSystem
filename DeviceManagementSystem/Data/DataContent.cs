@@ -16,8 +16,8 @@
             internal static readonly string DeviceSuccAdded = "The device was successfully added to the list.";
             internal static readonly string ManufactureDateSample = "Enter the date as in the example: 2022-12-31";
             internal static readonly string SuccDeletedDevice = "Device Removed Successfully";
-
-            public static string RemoveDevice = "Remove device!";
+            internal static readonly string RemoveDevice = "Remove device!";
+            internal static readonly string NoDeviceFound = "List is empty...";
         }
         internal static class ErrorData
         {
