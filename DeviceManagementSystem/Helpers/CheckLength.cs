@@ -15,7 +15,7 @@ namespace DeviceManagementSystem.Helpers
             {
                 showContent.PrintContent(DataContent.ErrorData.InputTooLong11);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 RedirectTo.MainMenu();
             }
         }
@@ -28,7 +28,7 @@ namespace DeviceManagementSystem.Helpers
             {
                 showContent.PrintContent(DataContent.ErrorData.InputTooLong100);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 RedirectTo.MainMenu();
             }
         }
@@ -41,7 +41,7 @@ namespace DeviceManagementSystem.Helpers
             {
                 showContent.PrintContent(DataContent.ErrorData.InputTooLong150);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 RedirectTo.MainMenu();
             }
         }

@@ -23,6 +23,7 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.GetAllDevicesException} {ex.Message}");
             }
         }
+
         public Device GetDeviceByModel(string deviceModel)
         {
             try
@@ -38,6 +39,23 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.GetDeviceByModelException} {ex.Message}");
             }
         }
+
+        public Device GetDeviceBySerialNumber(int serialNumber)
+        {
+            try
+            {
+                using (DeviceContext db = new DeviceContext())
+                {
+                    db.Database.EnsureCreated();
+                    return db.Devices.FirstOrDefault(d => d.UniqueSerialNumber == serialNumber);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: ${DataContent.ExeptionData.GetDeviceBySerialNumberException} {ex.Message}");
+            }
+        }
+
         public void AddNewDevice(int serialNumber, string model, string manufacturer, DateTime manufacturerDate)
         {
             try
@@ -62,25 +80,29 @@ namespace DeviceManagementSystem.Repositories
                 throw new Exception($"Exception in: ${DataContent.ExeptionData.AddNewDeviceException} {ex.Message}");
             }
         }
-        public void DeleteDeviceById(long deviceId)
+
+        public void DeleteDeviceBySerialNumber(int serialNumber)
         {
             try
             {
                 using (DeviceContext db = new DeviceContext())
                 {
                     db.Database.EnsureCreated();
-                    var deviceToDelete = db.Devices.FirstOrDefault(d => d.DeviceId == deviceId);
+                    var deviceToDelete = db.Devices.FirstOrDefault(d => d.UniqueSerialNumber == serialNumber);
                     if (deviceToDelete != null)
                     {
                         db.Devices.Remove(deviceToDelete);
                         db.SaveChanges();
                     }
-                    else { ColorHelper.RedColorTextEnter(DataContent.ErrorData.DeviceNotFound); }
+                    else
+                    {
+                        ColorHelper.RedColorTextEnter(DataContent.ErrorData.DeviceNotFound);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Exception in: ${DataContent.ExeptionData.DeleteDeviceByIdException} {ex.Message}");
+                throw new Exception($"Exception in: ${DataContent.ExeptionData.DeleteDeviceBySerialNrException} {ex.Message}");
             }
         }
     }
