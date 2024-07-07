@@ -7,6 +7,19 @@ namespace DeviceManagementSystem.Helpers
 {
     internal static class CheckLength
     {
+        public static void InputLenthNotLongerEleven(string input)
+        {
+            IShowContent showContent = new ShowContentService();
+
+            if (input.Length > 7)
+            {
+                showContent.PrintContent(DataContent.ErrorData.InputTooLong11);
+                showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
+                Thread.Sleep(1000);
+                RedirectTo.MainMenu();
+            }
+        }
+
         public static void InputLenthNotLongerOneHundred(string input)
         {
             IShowContent showContent = new ShowContentService();
@@ -19,13 +32,14 @@ namespace DeviceManagementSystem.Helpers
                 RedirectTo.MainMenu();
             }
         }
+
         public static void InputLenthNotLongerOneHundredFifty(string input)
         {
             IShowContent showContent = new ShowContentService();
 
             if (input.Length > 150)
             {
-                showContent.PrintContent(DataContent.ErrorData.InputTooLong100);
+                showContent.PrintContent(DataContent.ErrorData.InputTooLong150);
                 showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
                 Thread.Sleep(1000);
                 RedirectTo.MainMenu();

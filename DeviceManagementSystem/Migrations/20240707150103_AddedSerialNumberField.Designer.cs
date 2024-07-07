@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeviceManagementSystem.Migrations
 {
     [DbContext(typeof(DeviceContext))]
-    [Migration("20240707142549_AddedSerialNumberDeviceClassProperty")]
-    partial class AddedSerialNumberDeviceClassProperty
+    [Migration("20240707150103_AddedSerialNumberField")]
+    partial class AddedSerialNumberField
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,10 +53,8 @@ namespace DeviceManagementSystem.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("SerialNumber")
-                        .HasMaxLength(11)
-                        .HasColumnType("int")
-                        .HasColumnOrder(5);
+                    b.Property<int>("UniqueSerialNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("DeviceId");
 
@@ -66,38 +64,38 @@ namespace DeviceManagementSystem.Migrations
                         new
                         {
                             DeviceId = 1L,
-                            Date = new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9091),
+                            Date = new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2078),
                             ManufactureDate = new DateTime(2023, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Manufacturer = "Nothing Technology Limited",
                             Model = "Nothing Phone (2)",
-                            SerialNumber = 0
+                            UniqueSerialNumber = 0
                         },
                         new
                         {
                             DeviceId = 2L,
-                            Date = new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9123),
+                            Date = new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2111),
                             ManufactureDate = new DateTime(2022, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Manufacturer = "OnePlus Technology Co., Ltd.",
                             Model = "Oneplus 10 Pro",
-                            SerialNumber = 0
+                            UniqueSerialNumber = 0
                         },
                         new
                         {
                             DeviceId = 3L,
-                            Date = new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9125),
+                            Date = new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2113),
                             ManufactureDate = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Manufacturer = "Apple Inc.",
                             Model = "Apple iPhone 15",
-                            SerialNumber = 0
+                            UniqueSerialNumber = 0
                         },
                         new
                         {
                             DeviceId = 4L,
-                            Date = new DateTime(2024, 7, 7, 17, 25, 49, 802, DateTimeKind.Local).AddTicks(9126),
+                            Date = new DateTime(2024, 7, 7, 18, 1, 3, 699, DateTimeKind.Local).AddTicks(2115),
                             ManufactureDate = new DateTime(2024, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Manufacturer = "Samsung Electronics Co., Ltd.",
                             Model = "Samsung Galaxy S24 Ultra",
-                            SerialNumber = 0
+                            UniqueSerialNumber = 0
                         });
                 });
 #pragma warning restore 612, 618

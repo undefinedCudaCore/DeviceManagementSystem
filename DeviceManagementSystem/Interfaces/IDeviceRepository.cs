@@ -6,7 +6,7 @@ namespace DeviceManagementSystem.Interfaces
     {
         internal List<Device> GetAllDevices();
         internal Device GetDeviceByModel(string deviceModel);
-        internal void AddNewDevice(string model, string manufacturer, DateTime manufacturerDate);
+        internal void AddNewDevice(int serialNumber, string model, string manufacturer, DateTime manufacturerDate);
         internal void DeleteDeviceById(long deviceId);
     }
 }

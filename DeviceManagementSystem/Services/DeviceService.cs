@@ -1,4 +1,5 @@
 ﻿using DeviceManagementSystem.Data;
+using DeviceManagementSystem.Helpers;
 using DeviceManagementSystem.Interfaces;
 using DeviceManagementSystem.Models;
 using DeviceManagementSystem.Repositories;
@@ -13,7 +14,7 @@ namespace DeviceManagementSystem.Services
         }
 
         private IDeviceRepository _deviceRepository = new DeviceRepository();
-        private IShowContent showContent = new ShowContentService();
+        private IShowContent _showContent = new ShowContentService();
 
         public List<Device> GetAllDevices()
         {
@@ -35,7 +36,8 @@ namespace DeviceManagementSystem.Services
 
                 if (device == null)
                 {
-                    showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                    _showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                    _showContent.PrintContent(DataContent.ErrorData.RedirectToMainMenu);
                     Thread.Sleep(1000);
                     Redirects.RedirectTo.MainMenu();
                 }
@@ -58,6 +60,31 @@ namespace DeviceManagementSystem.Services
             catch (Exception ex)
             {
                 throw new Exception($"Exception in: Get Student By Id: {ex.Message}");
+            }
+        }
+
+        public void AddNewDevice(int serialNumber, string model, string manufacturer, DateTime manufacturerDate)
+        {
+            try
+            {
+                var deviceListBeforeAddition = _deviceRepository.GetAllDevices();
+
+                _deviceRepository.AddNewDevice(serialNumber, model, manufacturer, manufacturerDate);
+
+                var deviceListAfterAddition = _deviceRepository.GetAllDevices();
+
+                if (deviceListAfterAddition.Any() && deviceListBeforeAddition.Count < deviceListAfterAddition.Count)
+                {
+                    ColorHelper.GreenColorTextEnter(DataContent.BasicData.DeviceSuccAdded);
+                }
+                else
+                {
+                    _showContent.PrintContent(DataContent.ErrorData.SomethingWrong);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception in: {DataContent.ExeptionData.AddNewDeviceException} {ex.Message}");
             }
         }
     }

@@ -23,7 +23,10 @@ namespace DeviceManagementSystem.Windows
                 switch (option)
                 {
                     case "1":
-                        Console.WriteLine("AD NEW DEVICE");
+                        Console.Clear();
+
+
+
                         break;
                     case "2":
                         showContent.ShowAllDevices(deviceService.GetAllDevices());
